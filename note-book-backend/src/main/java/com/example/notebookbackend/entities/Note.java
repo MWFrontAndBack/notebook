@@ -1,5 +1,6 @@
 package com.example.notebookbackend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,8 @@ public class Note {
 
     @Enumerated(EnumType.STRING)
     private NoteCategory noteCategory;
+
+    @JsonBackReference
 
     @ManyToOne
     @JoinColumn(name ="user_id" )

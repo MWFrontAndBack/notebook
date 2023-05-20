@@ -1,46 +1,59 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import UserNavbar from "./usernavbar";
+import Navbar from "../mainpage/navbar/mainnavbar";
 import NotesSchow from "./notesshow";
-import "./notestyle.css";
-import { Link } from "react-router-dom";
-
+import "./allnotes.css";
 const AllNotes = () => {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/notes/1");
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
+    const username = localStorage.getItem("email");
+    const password = localStorage.getItem("password");
+    console.log(username);
+    console.log(password);
+
+    // Fetch user data using stored credentials
+    fetch("http://localhost:8080/api/public/user-page", {
+      headers: {
+        Authorization: "Basic " + btoa(`${username}:${password}`),
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Failed to fetch user data");
         }
-        const jsonData = await response.json();
-        setData(jsonData);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
+      })
+      .then((data) => {
+        setUserData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch user data", error);
+        setLoading(false);
+      });
   }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  console.log(userData);
   return (
     <div>
-      {data.map((item) => (
-        <div className="note" key={item.id}>
-          <NotesSchow val={item} />
-        </div>
-      ))}
+      <UserNavbar />
+      <div className="all-notes-container">
+        {loading ? (
+          <p>Loading...</p>
+        ) : userData ? (
+          <div className="notes-grid">
+            {userData.map((item) => (
+              <div key={item.id} className="note-card">
+                <NotesSchow val={item} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No data available</p>
+        )}
+      </div>
     </div>
   );
 };
