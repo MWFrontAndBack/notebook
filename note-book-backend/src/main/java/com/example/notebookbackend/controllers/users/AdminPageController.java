@@ -2,10 +2,9 @@ package com.example.notebookbackend.controllers.users;
 
 import com.example.notebookbackend.dto.UserDto;
 import com.example.notebookbackend.dto.mapper.mapperUtil.MapperUtil;
-import com.example.notebookbackend.entities.Note;
+import com.example.notebookbackend.entities.Admin;
 import com.example.notebookbackend.entities.User;
 import com.example.notebookbackend.repositories.UserRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,12 +38,17 @@ public class AdminPageController {
 
     @DeleteMapping
     @RequestMapping(("/delete-user/{id}"))
-    public ResponseEntity<User> deleteNote(@PathVariable(name = "id") Long id) {
+    public Object deleteNote(@PathVariable(name = "id") Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = (String) authentication.getPrincipal();
+        Admin admin = userRepository.findAdminByEmail(email);
+        if(admin.isCanManageUsers()) {
+            User user = userRepository.findById(id).orElseThrow();
+            userRepository.delete(user);
+            return ResponseEntity.ok(user);
 
-        User user = userRepository.findById(id).orElseThrow();
-        userRepository.delete(user);
+        }
+return ResponseEntity.badRequest();
 
-
-        return ResponseEntity.ok(user);
     }
 }

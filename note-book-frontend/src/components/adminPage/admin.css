@@ -10,6 +10,11 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.error-message {
+  color: red;
+  font-family: Arial, sans-serif;
+  margin-left: 50%;
+}
 
 .user-card p {
   margin: 5px 0;

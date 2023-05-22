@@ -13,10 +13,16 @@ import java.util.Set;
 @NoArgsConstructor
 
 public class Admin extends User{
+    @Column(name = "canmanage")
+    private  boolean canManageUsers;
 
-    public Admin(List<Note> noteList, String loginName, String email, String password, String photo) {
+    public Admin(List<Note> noteList, String loginName, String email, String password, String photo,boolean canManageUsers) {
         super(noteList, loginName, email, password, photo);
+        this.canManageUsers = canManageUsers;
+
     }
 
-
+    public boolean isCanManageUsers() {
+        return canManageUsers;
+    }
 }

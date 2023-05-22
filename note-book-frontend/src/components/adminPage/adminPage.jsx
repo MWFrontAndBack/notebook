@@ -7,6 +7,8 @@ const AdminPage = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [error, setError] = useState(null); // New state variable for error message
+
   useEffect(() => {
     const username = localStorage.getItem("email");
     const password = localStorage.getItem("password");
@@ -50,6 +52,7 @@ const AdminPage = () => {
             prevUserData.filter((user) => user.id !== iduser)
           );
         } else {
+          setError("cant delete users");
           console.log("Failed to delete User");
         }
       })
@@ -81,6 +84,7 @@ const AdminPage = () => {
           <p>No data available</p>
         )}
       </div>
+      <div className="error-message">{error}</div>
     </div>
   );
 };

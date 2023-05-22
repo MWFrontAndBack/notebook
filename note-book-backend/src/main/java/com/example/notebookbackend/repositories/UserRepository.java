@@ -1,5 +1,6 @@
 package com.example.notebookbackend.repositories;
 
+import com.example.notebookbackend.entities.Admin;
 import com.example.notebookbackend.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query("SELECT n FROM User n WHERE n.email= :email")
     User findByEmail(String email);
+
+    @Query("SELECT n FROM Admin n WHERE n.email= :email")
+    Admin findAdminByEmail(String email);
 
     @Query("SELECT COUNT(n) > 0 FROM User n WHERE n.email = :email")
 

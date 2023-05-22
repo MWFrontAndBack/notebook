@@ -147,7 +147,7 @@ String encode =passwordEncoder.encode("haslo");
                 String encode4 =passwordEncoder.encode("admin");
                 List<Note> emptyNotes =new ArrayList<>();
 
-                Admin admin =  new Admin(emptyNotes,"admin","admin@gmail.com",encode4,"https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg");
+                Admin admin =  new Admin(emptyNotes,"admin","admin@gmail.com",encode4,"https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg",true);
                 Authority authorityAdmin =new Authority();
                 authorityAdmin.setAuthority("ROLE_ADMIN");
                 Set<Authority> authoritiesAdmin = new HashSet<>();
