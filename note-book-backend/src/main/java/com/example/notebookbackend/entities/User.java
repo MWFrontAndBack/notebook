@@ -4,21 +4,19 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "user")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "user_id")
     private Long id;
 
@@ -45,6 +43,23 @@ public class User {
 
     // Getters and Setters
 
+
+    public User(List<Note> noteList, String loginName, String email, String password, String photo, Set<Authority> authorities) {
+        this.noteList = noteList;
+        this.loginName = loginName;
+        this.email = email;
+        this.password = password;
+        this.photo = photo;
+        this.authorities = authorities;
+    }
+
+    public User(List<Note> noteList, String loginName, String email, String password, String photo) {
+        this.noteList = noteList;
+        this.loginName = loginName;
+        this.email = email;
+        this.password = password;
+        this.photo = photo;
+    }
 
     public List<Note> getNoteList() {
         return noteList;
@@ -102,6 +117,19 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", noteList=" + noteList +
+                ", loginName='" + loginName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", photo='" + photo + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
 }
 

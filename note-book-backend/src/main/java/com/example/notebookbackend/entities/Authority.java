@@ -21,8 +21,15 @@ public class Authority {
     private String authority;
 
     @JsonBackReference
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "id=" + id +
+                ", authority='" + authority + '\'' +
+                '}';
+    }
 }

@@ -1,9 +1,19 @@
 .main-page {
-  text-align: center;
+  background-color: #257db863;
   padding: 20px;
+  text-align: center;
+  height: 100vh; /* Set the height of the main page to 100% of the viewport height */
 }
 
-.description {
-  font-size: 18px;
-  margin-top: 10px;
+.title {
+  font-family: "Arial", sans-serif;
+  font-size: 52px;
+  color: #0084ff;
+  margin-bottom: 10px;
+}
+
+.note-image {
+  max-height: 100%;
+  max-width: 100%;
+  margin-top: 20px;
 }

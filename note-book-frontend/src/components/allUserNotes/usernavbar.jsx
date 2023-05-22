@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserNavbar.css"; // Import the CSS file for styling
+import "./UserNavbar.css";
 import { Link } from "react-router-dom";
 
 class UserNavbar extends React.Component {
@@ -8,20 +8,14 @@ class UserNavbar extends React.Component {
       <nav className="user-navbar">
         <ul className="user-navbar__list">
           <li className="user-navbar__item">
-            <button
-              className="user-navbar__button"
-              onClick={this.props.onCreateNote}
-            >
+            <Link className="logoutlink" to={"/user-page/add-note"}>
               Create Note
-            </button>
+            </Link>
           </li>
           <li className="user-navbar__item">
-            <button
-              className="user-navbar__button"
-              onClick={this.props.onShowAccount}
-            >
+            <Link className="logoutlink" to={"/user-page/account"}>
               Show Account
-            </button>
+            </Link>
           </li>
           <li className="user-navbar__item">
             <Link className="logoutlink" to={"/"}>

@@ -1,4 +1,4 @@
-package com.example.notebookbackend.controllers.service;
+package com.example.notebookbackend.service;
 
 import com.example.notebookbackend.controllers.users.LoginResponse;
 import com.example.notebookbackend.entities.User;

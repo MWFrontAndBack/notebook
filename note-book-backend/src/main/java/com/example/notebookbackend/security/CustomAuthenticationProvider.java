@@ -1,8 +1,11 @@
 package com.example.notebookbackend.security;
 
+import com.example.notebookbackend.controllers.users.UserPageController;
 import com.example.notebookbackend.entities.Authority;
 import com.example.notebookbackend.entities.User;
 import com.example.notebookbackend.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,6 +25,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserRepository userRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationProvider.class);
+
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
@@ -29,7 +34,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String email = authentication.getName();
         String password = authentication.getCredentials().toString();
         User user = userRepository.findByEmail(email);
-        if(passwordEncoder.matches(password,user.getPassword())){
+
+        if(user!=null &&passwordEncoder.matches(password,user.getPassword())){
+            logger.error("istnieje");
+            logger.error(email + " " + password + user.getAuthorities());
+
             return  new UsernamePasswordAuthenticationToken(email,password,getAuthorities(user.getAuthorities()));
 
         }else {

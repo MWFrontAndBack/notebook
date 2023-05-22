@@ -26,16 +26,15 @@ const LoginForm = () => {
         }
       })
       .then((data) => {
-        console.log("Login successful", data);
-        // Save email and password to local storage
-        // localStorage.removeItem("email");
-        // localStorage.removeItem("password");
-
+        // console.log("Login successful", data);
+        let authority = data.user.authorities[0].authority;
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
-
-        // Redirect to the user's page after successful login
-        navigate("/user-page", { state: data }); // Pass the user data as state
+        if (authority === "ROLE_USER") {
+          navigate("/user-page", { state: data });
+        } else if (authority === "ROLE_ADMIN") {
+          navigate("/admin-page");
+        }
       })
       .catch((error) => {
         console.error("Login failed", error);

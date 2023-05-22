@@ -1,6 +1,10 @@
 import { useState } from "react";
 import "./addform.css";
+import { useNavigate } from "react-router-dom";
+
 const NoteForm = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -22,17 +26,21 @@ const NoteForm = () => {
       content: formData.content,
       noteCategory: formData.noteCategory,
     };
-
-    fetch("http://localhost:8080/notes/add/", {
+    const username = localStorage.getItem("email");
+    const password = localStorage.getItem("password");
+    fetch("http://localhost:8080/api/public/user-page/add-note", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+
+        Authorization: "Basic " + btoa(`${username}:${password}`),
       },
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
+        navigate("/user-page");
       })
       .catch((error) => {
         console.error("Error:", error);

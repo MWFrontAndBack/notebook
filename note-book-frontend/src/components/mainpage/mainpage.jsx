@@ -2,13 +2,14 @@ import "./main.css";
 const MainPage = () => {
   return (
     <div className="main-page">
-      <h1>Notes App</h1>
-      <p className="description">
-        Welcome to the main page of my React application! This is a simple
-        example of how to add elements and styles to a React component.
-      </p>
+      <h1 className="title">Notes App</h1>
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/002/209/532/original/paper-line-texture-background-free-vector.jpg"
+        alt="Note"
+        className="note-image"
+      />
     </div>
   );
 };
-
+//
 export default MainPage;

@@ -1,9 +1,6 @@
 package com.example.notebookbackend.dbInit;
 
-import com.example.notebookbackend.entities.Authority;
-import com.example.notebookbackend.entities.Note;
-import com.example.notebookbackend.entities.NoteCategory;
-import com.example.notebookbackend.entities.User;
+import com.example.notebookbackend.entities.*;
 import com.example.notebookbackend.repositories.NoteRepository;
 import com.example.notebookbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Configuration
 public class InitDatabase {
@@ -28,7 +23,7 @@ public class InitDatabase {
 
 String encode =passwordEncoder.encode("haslo");
                 User user = User.builder()
-                        .photo("photo")
+                        .photo("https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg")
                         .loginName("kacper")
                         .password(encode)
                         .email("kacper@gmail.com")
@@ -146,8 +141,21 @@ String encode =passwordEncoder.encode("haslo");
 
                 user2.setNoteList(Arrays.asList(note1User2, note2User2));
                 user2.setAuthorities(authorities2);
-
                 userRepository.save(user2);
+
+//                save admin to Database
+                String encode4 =passwordEncoder.encode("admin");
+                List<Note> emptyNotes =new ArrayList<>();
+
+                Admin admin =  new Admin(emptyNotes,"admin","admin@gmail.com",encode4,"https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg");
+                Authority authorityAdmin =new Authority();
+                authorityAdmin.setAuthority("ROLE_ADMIN");
+                Set<Authority> authoritiesAdmin = new HashSet<>();
+                authoritiesAdmin.add(authorityAdmin);
+
+                authorityAdmin.setUser(admin);
+                admin.setAuthorities(authoritiesAdmin);
+userRepository.save(admin);
 
 
             };

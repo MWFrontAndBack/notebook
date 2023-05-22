@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./login.css";
 const CreateAccountForm = () => {
   const [loginName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,9 +19,11 @@ const CreateAccountForm = () => {
       body: JSON.stringify({ loginName, password, email }),
     })
       .then((response) => response.json())
+
       .then((data) => {
+        navigate("/");
+
         setRedirectToLogin(true);
-        // Handle the create account response
       })
       .catch((error) => {});
     if (redirectToLogin) {

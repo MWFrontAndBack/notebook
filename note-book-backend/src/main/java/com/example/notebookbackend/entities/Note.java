@@ -1,6 +1,7 @@
 package com.example.notebookbackend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -51,6 +52,7 @@ public class Note {
         this.content = content;
     }
 
+
     public NoteCategory getNoteCategory() {
         return noteCategory;
     }
@@ -58,6 +60,11 @@ public class Note {
     public void setNoteCategory(NoteCategory noteCategory) {
         this.noteCategory = noteCategory;
     }
+@JsonIgnore
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
 
     @Override
     public String toString() {
