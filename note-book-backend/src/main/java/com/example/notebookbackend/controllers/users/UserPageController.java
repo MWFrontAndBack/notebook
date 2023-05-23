@@ -61,9 +61,7 @@ public class UserPageController {
     @PostMapping
     @RequestMapping("/add-note")
     public ResponseEntity<Note> addNote(@RequestBody Note note) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "http://localhost:3000");
-        logger.error(note.getTitle());
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = (String) authentication.getPrincipal();
         User user = userRepository.findByEmail(email);

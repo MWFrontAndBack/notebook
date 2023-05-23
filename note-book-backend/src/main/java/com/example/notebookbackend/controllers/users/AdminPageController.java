@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 @RestController
 @RequestMapping("/api/public/admin-page")
@@ -28,6 +29,8 @@ public class AdminPageController {
 
     public ResponseEntity<List<UserDto>> getUsers(){
         List<User> all = userRepository.findAll();
+        all.removeIf(a-> a.getEmail().equals("admin@gmail.com"));
+
         List<UserDto> listmapped = all.stream().map(a -> MapperUtil.map(a, UserDto.class)).toList();
         if(all.isEmpty()){
             return (ResponseEntity<List<UserDto>>) ResponseEntity.notFound();

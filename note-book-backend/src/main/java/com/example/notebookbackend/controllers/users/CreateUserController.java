@@ -44,7 +44,7 @@ private AuthoritiesRepository authoritiesRepository;
     @RequestMapping("/create-user")
     public ResponseEntity<User> saveUserTodb(@RequestBody User requestUser) {
         if (userRepository.existsByEmail(requestUser.getEmail())) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).build();
         }
         requestUser.setPhoto("https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg");
         requestUser.setPassword(passwordEncoder.encode(requestUser.getPassword()));
