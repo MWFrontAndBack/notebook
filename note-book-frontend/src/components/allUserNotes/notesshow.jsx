@@ -20,9 +20,7 @@ const NotesSchow = (props) => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Note deleted");
-          navigate("/user-page");
-          setIsDeleted(true);
+          props.onNoteDelete(id);
         } else {
           console.log("Failed to delete note");
         }

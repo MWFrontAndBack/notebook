@@ -34,6 +34,11 @@ const AllNotes = () => {
         });
     }
   }, []);
+  const handleNoteDeletion = (id) => {
+    setUserData((prevUserData) =>
+      prevUserData.filter((item) => item.id !== id)
+    );
+  };
 
   return (
     <div>
@@ -45,7 +50,7 @@ const AllNotes = () => {
           <div className="notes-grid">
             {userData.map((item) => (
               <div key={item.id} className="note-card">
-                <NotesSchow val={item} />
+                <NotesSchow val={item} onNoteDelete={handleNoteDeletion} />
               </div>
             ))}
           </div>

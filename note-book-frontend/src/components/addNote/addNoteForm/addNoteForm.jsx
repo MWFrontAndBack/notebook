@@ -61,6 +61,7 @@ const NoteForm = () => {
           name="title"
           value={formData.title}
           onChange={handleChange}
+          required
         />
       </label>
       <br />
@@ -70,6 +71,7 @@ const NoteForm = () => {
           name="content"
           value={formData.content}
           onChange={handleChange}
+          required
         />
       </label>
       <br />
@@ -79,6 +81,7 @@ const NoteForm = () => {
           name="noteCategory"
           value={formData.noteCategory}
           onChange={handleChange}
+          required
         >
           <option value="">Select a category</option>
           <option value="SPORT">SPORT</option>

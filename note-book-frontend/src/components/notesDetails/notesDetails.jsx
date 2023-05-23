@@ -1,6 +1,7 @@
-import { Switch, Route, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./notesdet.css";
+import DetailsNavbar from "./detailsnav";
+
 const NoteDetail = (props) => {
   console.log(props, " props");
 
@@ -11,6 +12,7 @@ const NoteDetail = (props) => {
 
   return (
     <div>
+      <DetailsNavbar />
       <div className="note-container">
         <div className="note">
           <h2>Details</h2>
@@ -18,7 +20,7 @@ const NoteDetail = (props) => {
           <h2>Note Details</h2>
           <p>ID: {data.id}</p>
           <p>Title: {data.title}</p>
-          <p> {data.content}</p>
+          <p className="note-len"> {data.content}</p>
           <p>Category: {data.noteCategory}</p>
         </div>
       </div>

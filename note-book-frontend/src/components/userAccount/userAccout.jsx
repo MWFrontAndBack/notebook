@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import UserNavbar from "../allUserNotes/usernavbar";
+// import UserNavbar from "../allUserNotes/usernavbar";
 import "./useracc.css";
+import DetailsNavbar from "../notesDetails/detailsnav";
 const UserAccoutn = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,7 +37,7 @@ const UserAccoutn = () => {
 
   return (
     <div>
-      <UserNavbar />
+      <DetailsNavbar />
       <div className="container">
         <div className="content">
           <div className="image-container">
