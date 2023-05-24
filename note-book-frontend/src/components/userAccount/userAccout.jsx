@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 // import UserNavbar from "../allUserNotes/usernavbar";
 import "./useracc.css";
 import DetailsNavbar from "../notesDetails/detailsnav";
+import { useNavigate } from "react-router-dom";
 const UserAccoutn = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   useEffect(() => {
     const username = localStorage.getItem("email");
     const password = localStorage.getItem("password");
+    const loggedIn = localStorage.getItem("isLoggedIn");
+
+    if (loggedIn !== "true") {
+      navigate("/login");
+    }
+
     console.log(username);
     console.log(password);
     if (username && password) {

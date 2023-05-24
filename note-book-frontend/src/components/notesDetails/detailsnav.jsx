@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from "../../assets/paper.svg";
 import "./details.css";
 const DetailsNavbar = () => {
   return (
-    <div>
+  
       <div className="navbar">
         <ul className="nav-list">
           <li className="nav-item">
@@ -17,7 +17,6 @@ const DetailsNavbar = () => {
           <Logo />
         </div>
       </div>
-    </div>
   );
 };
 

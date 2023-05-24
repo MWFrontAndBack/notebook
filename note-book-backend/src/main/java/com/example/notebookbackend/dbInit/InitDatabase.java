@@ -80,7 +80,7 @@ String encode =passwordEncoder.encode("haslo");
                 userRepository.save(user);
                 String encode1 = passwordEncoder.encode("password1");
                 User user1 = User.builder()
-                        .photo("photo1")
+                        .photo("https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg")
                         .loginName("user1")
                         .password(encode1)
                         .email("user1@gmail.com")
@@ -113,7 +113,7 @@ String encode =passwordEncoder.encode("haslo");
 
                 String encode2 = passwordEncoder.encode("password2");
                 User user2 = User.builder()
-                        .photo("photo2")
+                        .photo("https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg")
                         .loginName("user2")
                         .password(encode2)
                         .email("user2@gmail.com")

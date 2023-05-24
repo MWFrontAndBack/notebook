@@ -12,7 +12,11 @@ const AdminPage = () => {
   useEffect(() => {
     const username = localStorage.getItem("email");
     const password = localStorage.getItem("password");
+    const loggedIn = localStorage.getItem("isLoggedIn");
 
+    if (loggedIn !== "true") {
+      navigate("/login");
+    }
     if (username && password) {
       fetch("http://localhost:8080/api/public/admin-page", {
         headers: {

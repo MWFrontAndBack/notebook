@@ -28,6 +28,8 @@ const LoginForm = () => {
       .then((data) => {
         // console.log("Login successful", data);
         let authority = data.user.authorities[0].authority;
+        localStorage.setItem("isLoggedIn", "true");
+
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
         if (authority === "ROLE_USER") {

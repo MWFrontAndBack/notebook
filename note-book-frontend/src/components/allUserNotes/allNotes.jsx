@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import UserNavbar from "./usernavbar";
 import NotesSchow from "./notesshow";
 import "./allnotes.css";
+import { useNavigate } from "react-router-dom";
 
 const AllNotes = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const username = localStorage.getItem("email");
     const password = localStorage.getItem("password");
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn !== "true") {
+      navigate("/login");
+    }
 
     if (username && password) {
       fetch("http://localhost:8080/api/public/user-page", {

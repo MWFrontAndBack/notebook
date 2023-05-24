@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./addform.css";
 import { useNavigate } from "react-router-dom";
 
 const NoteForm = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn !== "true") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -52,6 +58,7 @@ const NoteForm = () => {
       noteCategory: "",
     });
   };
+
   return (
     <form onSubmit={handleSubmit} className="my-form">
       <label>

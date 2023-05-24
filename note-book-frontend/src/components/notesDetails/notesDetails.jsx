@@ -1,9 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, usee } from "react-router-dom";
 import "./notesdet.css";
+
 import DetailsNavbar from "./detailsnav";
+import { useEffect } from "react";
 
 const NoteDetail = (props) => {
-  console.log(props, " props");
+  const navigate = useNavigate();
 
   const location = useLocation();
   const data = location.state?.data;
