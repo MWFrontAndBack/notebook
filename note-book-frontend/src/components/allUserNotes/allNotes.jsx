@@ -48,21 +48,25 @@ const AllNotes = () => {
   return (
     <div>
       <UserNavbar />
-      <div className="all-notes-container">
-        {loading ? (
-          <p>Loading...</p>
-        ) : userData ? (
-          <div className="notes-grid">
-            {userData.map((item) => (
-              <div key={item.id} className="note-card">
-                <NotesSchow val={item} onNoteDelete={handleNoteDeletion} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No data available</p>
-        )}
-      </div>
+      {/* <div className="all-notes-container"> */}
+      {loading ? (
+        <p>Loading...</p>
+      ) : userData ? (
+        <div className="parent">
+          {userData.map((item) => (
+            <div key={item.id} className="column">
+              <NotesSchow
+                val={item}
+                onNoteDelete={handleNoteDeletion}
+                className="note"
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No data available</p>
+      )}
+      {/* </div> */}
     </div>
   );
 };

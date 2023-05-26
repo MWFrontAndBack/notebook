@@ -155,6 +155,9 @@ String encode =passwordEncoder.encode("haslo");
 
                 authorityAdmin.setUser(admin);
                 admin.setAuthorities(authoritiesAdmin);
+
+
+
 userRepository.save(admin);
 
 

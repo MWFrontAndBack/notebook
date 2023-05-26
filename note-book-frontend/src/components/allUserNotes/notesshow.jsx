@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./notestyle.css";
+import "./allnotes.css";
 import { useState } from "react";
 
 const NotesSchow = (props) => {
@@ -33,33 +33,31 @@ const NotesSchow = (props) => {
     return null;
   }
   return (
-    <div>
-      <div className="note-content">
-        <h2 className="note-title">{title}</h2>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <hr className="note-line"></hr>
-        <h2 className="note-category">Type: {noteCategory}</h2>
-        <div className="link-container">
-          <Link
-            className="note-link"
-            to={`/user-page/note-details/${id}`}
-            state={{ data: note }}
-          >
-            Details
-          </Link>
-          <span className="link-spacing"></span>
-          <button className="note-link" onClick={handleDelete}>
-            Delte
-          </button>
-        </div>
+    <div className="note-content">
+      <h2 className="note-title">{title}</h2>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <hr className="note-line"></hr>
+      <h2 className="note-category">Type: {noteCategory}</h2>
+      <div className="link-container">
+        <Link
+          className="note-link1"
+          to={`/user-page/note-details/${id}`}
+          state={{ data: note }}
+        >
+          Details
+        </Link>
+        <span className="link-spacing"></span>
+        <button className="note-link2" onClick={handleDelete}>
+          Delte
+        </button>
       </div>
     </div>
   );

@@ -1,14 +1,77 @@
-.all-notes-container {
+/* allnotes.css */
+.note-content {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.note-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.note-line {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 5px 0;
+}
+
+.note-category {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.link-container {
+  margin-top: 10px;
+}
+
+.parent {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
 }
 
-.note-card {
-  flex: 0 0 calc(33.33% - 20px);
-  margin: 10px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.column {
+  width: calc(100% / 3);
+  padding: 10px;
+  box-sizing: border-box;
+  margin-left: 20px;
+  width: 400px;
+  margin-right: 20px;
+}
+
+.note-link1 {
+  display: inline-block;
+  background-color: #0080f8;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.note-link2 {
+  display: inline-block;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.link-spacing {
+  margin-left: 10px;
+}
+
+.column {
+  margin-bottom: 20px;
 }

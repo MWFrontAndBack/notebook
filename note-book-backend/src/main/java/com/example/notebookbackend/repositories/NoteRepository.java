@@ -13,4 +13,6 @@ public interface NoteRepository extends JpaRepository<Note,Long> {
     @Query("SELECT n FROM Note n WHERE n.owner.id = :id")
     List<Note> findByOwner(Long id);
 
+
+
 }

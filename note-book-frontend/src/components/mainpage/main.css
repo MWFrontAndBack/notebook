@@ -2,18 +2,19 @@
   background-color: #257db863;
   padding: 20px;
   text-align: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
-.title {
-  font-family: "Arial", sans-serif;
-  font-size: 52px;
-  color: #0084ff;
-  margin-bottom: 10px;
+.title-app {
+  font-family: "Alfa Slab One", cursive;
+  font-family: "DynaPuff", cursive;
+  font-family: "Pacifico", cursive;
+  font-family: "Rubik Puddles", cursive;
+  font-size: 60px;
 }
 
 .note-image {
-  width: 100%;
+  width: 70%;
   height: auto;
-  margin-top: 20px;
+  margin-top: 30px;
 }

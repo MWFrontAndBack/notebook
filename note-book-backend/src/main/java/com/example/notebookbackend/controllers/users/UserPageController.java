@@ -40,6 +40,7 @@ public class UserPageController {
         if (user == null) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
+
         return ResponseEntity.ok().body(user.getNoteList());
     }
 

@@ -7,6 +7,7 @@ import LoginForm from './components/loginForm/loginUser';
 import UserAccoutn from './components/userAccount/userAccout';
 import NoteDetail from './components/notesDetails/notesDetails';
 import AdminPage from './components/adminPage/adminPage';
+import Footer from './components/footer/footer';
 
 function App() {
   const location = useLocation();
